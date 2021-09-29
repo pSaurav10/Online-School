@@ -3,6 +3,7 @@ import './CSS/CategoriesCard.css';
 import Rating from '../CoursePage/Rating';
 
 const CourseCards =(props)=>{
+  console.log(props)
     return(
 
               <div className="Course-Cards">                

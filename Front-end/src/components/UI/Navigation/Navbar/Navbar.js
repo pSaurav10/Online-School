@@ -93,7 +93,7 @@ const Navbar = ()=>{
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-          <ul className="navbar-nav mr-auto">
+          {/* <ul className="navbar-nav mr-auto">
 
               <li className="nav-item dropdown" >
                   <a href={'/'} className="nav-link dropdown-toggle" id="navbarDropdown" role="button" 
@@ -113,7 +113,7 @@ const Navbar = ()=>{
                     
                   </div>
               </li>
-          </ul>
+          </ul> */}
                 
             
           <Search/>
