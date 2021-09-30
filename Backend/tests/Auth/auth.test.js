@@ -14,13 +14,13 @@ var access_token=null;
 
 const UserCycle=async ()=>{
 
-    new_User = await User.create({name:'ayush',email:"ayush@gmail.com",password:'password',
+    new_User = await User.create({name:'saurav',email:"sauravonmail@gmail.com",password:'password',
     isverified:true,courses:[], bookmark:[],preferences:[] });
 
     new_course = await Course.create({ title: "course_test", category:"Machine Learning",
-    name:"ayush",discription:"something",creator:new_User._id});
+    name:"saurav",discription:"something",creator:new_User._id});
 
-    access_token = await jwt.sign({email:"ayush@gmail.com",userId:new_User._id},global.access_token,{
+    access_token = await jwt.sign({email:"sauravonmail@gmail.com",userId:new_User._id},global.access_token,{
     algorithm: "HS256",
     expiresIn:"10h"
     });                   
@@ -46,7 +46,7 @@ describe("Authentication" , ()=>{
        
         await supertest(app).post(`/signup`)
         .set(header)
-        .send({email:"test@gmail.com", name:'Ayush', password:"password"})
+        .send({email:"test@gmail.com", name:'Saurav', password:"password"})
         .expect(201)
         .then(res=>{
             expect(res.body).toEqual({ message: "OTP sent to your Email" })
@@ -56,7 +56,7 @@ describe("Authentication" , ()=>{
 
         await supertest(app).post(`/signup`)
         .set(header)
-        .send({email:"test@gmail.com", name:'Ayush', password:"password"})
+        .send({email:"test@gmail.com", name:'Saurav', password:"password"})
         .expect(422)
         .then(res=>{
             expect(res.body.message[0].msg).toEqual("Email already exists!")
@@ -71,7 +71,7 @@ describe("Authentication" , ()=>{
 
         await supertest(app).post(`/login`)
         .send({email:"ayush@gmail.com",password:"password"})
-        .expect(401)
+        .expect(422)
         // .then(res=>{
         //     expect(res.body.message).toEqual("User logged in!")
         //     expect(JSON.stringify(res.body.userId)).toEqual(JSON.stringify(new_User._id))

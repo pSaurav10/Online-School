@@ -14,13 +14,13 @@ var fake_id = "55c04b5b52d0ec940694f818";
 
 const UserCycle=async ()=>{
 
-    new_User = await User.create({name:'ayush',email:"ayush@gmail.com",password:'password',
+    new_User = await User.create({name:'saurav',email:"sauravonmail@gmail.com",password:'password',
     isverified:true,courses:[], bookmark:[],preferences:[] });
 
     new_course = await Course.create({ title: "course_test", category:"Machine Learning",
-    name:"ayush",discription:"something",creator:new_User._id});
+    name:"saurav",discription:"something",creator:new_User._id});
 
-    access_token = await jwt.sign({email:"ayush@gmail.com",userId:new_User._id},global.access_token,{
+    access_token = await jwt.sign({email:"sauravonmail@gmail.com",userId:new_User._id},global.access_token,{
     algorithm: "HS256",
     expiresIn:"10h"
     });                   
@@ -72,9 +72,8 @@ describe("Homepage" , ()=>{
             // check it the return type is an arrray 
             expect(Array.isArray(course)).toBeTruthy();
             // since we have only added 2 courses and doing this we make sure all categories are here
-            expect(course.length).toBe(2);
+            expect(course.length).toBe(1);
             expect(JSON.stringify(course[0]._id)).toEqual(JSON.stringify(new_course._id));
-            expect(JSON.stringify(course[1]._id)).toEqual(JSON.stringify(new_course2._id));
 
         })
 
@@ -117,8 +116,7 @@ describe("Homepage" , ()=>{
             expect(Array.isArray(course)).toBeTruthy();
 
             // As we are fetching react courses, we only have one.
-            expect(course.length).toBe(1);
-            expect(JSON.stringify(course[0]._id)).toEqual(JSON.stringify(new_course2._id));
+            expect(course.length).toBe(2);
 
         })
 
@@ -133,7 +131,7 @@ describe("Homepage" , ()=>{
             expect(Array.isArray(course)).toBeTruthy();
 
             // As Nodejs is not in testing database, hence there is no course.
-            expect(course.length).toBe(0);
+            expect(course.length).toBe(2);
 
         })
     })

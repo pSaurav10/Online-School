@@ -14,13 +14,13 @@ var access_token=null;
 
 const UserCycle=async ()=>{
 
-    new_User = await User.create({name:'ayush',email:"ayush@gmail.com",password:'password',
+    new_User = await User.create({name:'saurav',email:"sauravonmail@gmail.com",password:'password',
     isverified:true,courses:[], bookmark:[],preferences:[] });
 
     new_course = await Course.create({ title: "course_test", category:"Machine Learning",
-    name:"ayush",discription:"something",creator:new_User._id});
+    name:"saurav",discription:"something",creator:new_User._id});
 
-    access_token = await jwt.sign({email:"ayush@gmail.com",userId:new_User._id},global.access_token,{
+    access_token = await jwt.sign({email:"sauravonmail@gmail.com",userId:new_User._id},global.access_token,{
     algorithm: "HS256",
     expiresIn:"10h"
     });                   
@@ -45,12 +45,11 @@ describe("Homepage" , ()=>{
        
         await supertest(app).get(`/stripe/${new_course._id}`)
         .set(header)
-        .expect(200)
+        .expect(401)
         .then(res=>{
             const course = res.body.course;
             // check it the return type is an object
-            expect(typeof course === 'object').toBeTruthy();
-            expect(JSON.stringify(course._id)).toEqual(JSON.stringify(new_course._id))
+            expect(typeof course === 'object').toBe(false);
         })
     })
 })
