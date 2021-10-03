@@ -1,5 +1,5 @@
 # E-learn
-Fully responsive single page application made using MERN Stack! 💙
+Fully responsive application made using MERN Stack!
 TECH USED
 
     React
