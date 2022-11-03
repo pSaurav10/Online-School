@@ -20,7 +20,6 @@ Student
 
     Authentication system with signup,login,otp verification,resend otp,forgot password (fully validated with bootstrap alerts)
     Google authentication (Oauth2) using react-google-login and google auth-library
-    Stripe Payment gateway integrated with backend to buy courses
     Redux store to easily manage states
     Homepage with courses being fetched categorically
     Recommended Courses based on user's preferences
